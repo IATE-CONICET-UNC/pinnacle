@@ -1,0 +1,1 @@
+When you get your API key, save it to a file called ~/.ads/dev_key or save it as an environment variable named ADS_DEV_KEY

@@ -1,0 +1,16 @@
+A configuration file stores two important pieces of information: the authentication credentials and the paths to cache files. Upon first usage, and if the configuration file does not exist, pybliometrics guides through the process of creating it. The file is stored in a hidden folder named “.scopus” in the user’s home directory (∼ /).
+
+
+API KEY configuration
+---------------------
+
+1. Go to Elsevier developers and create an account (if not done previously)
+
+https://dev.elsevier.com/
+
+2. Go to "My API Key":
+
+https://dev.elsevier.com/apikey/manage
+
+and create a key.
+
