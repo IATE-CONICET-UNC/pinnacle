@@ -36,8 +36,6 @@ for a in pprs:
     for p in a:
         t = [p.aff, p.author, p.bibcode, p.citation, p.citation_count,
                 p.first_author, p.metrics, p.title, p.year]
-        print(t)
-        input()
         #ps.append(t)
 
 

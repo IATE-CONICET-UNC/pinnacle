@@ -10,6 +10,11 @@ Welcome to iate_audit's documentation!
    :maxdepth: 2
    :caption: Contents:
 
+   iate
+   report
+   stats
+   ccts
+
 
 
 Indices and tables
