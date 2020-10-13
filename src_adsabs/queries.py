@@ -1,4 +1,3 @@
-import ads
 import pandas as pd
 import pickle
 from os import path
@@ -11,11 +10,11 @@ from publications at IATE.
 
 ADS scraping
 ------------
- 
+
 save the string for the ADS API key in the file "ADS_API_Token".
 $ export ADS_DEV_KEY=`more ADS_API_Token`
 more info: https://github.com/adsabs/adsabs-dev-api
- 
+
 From this code
 --------------
 
@@ -60,16 +59,15 @@ qreload = False
 
 # overwrite files?
 clobber = False
-  
+
 # make plots?
 makeplots = True
-
 
 
 # #################################################################
 # ( 1 ) Load ADS query
 # #################################################################
- 
+
 filename = '../dat/investigadores_iate_LF.csv'
 with open(filename) as f:
     auth_names = f.read()
@@ -82,7 +80,7 @@ if path.isfile('../dat/byauth.pk'):
         if clobber:
             pickle.dump(byauth, open('../dat/byauth.pk', 'wb'))
     else:
-        byauth = pickle.load( open( '../dat/byauth.pk', 'rb' ) )
+        byauth = pickle.load(open('../dat/byauth.pk', 'rb'))
 else:
     byauth = ads_utils.get_papers_by_authors(auth_names)
     pickle.dump(byauth, open('../dat/byauth.pk', 'wb'))
@@ -102,15 +100,14 @@ for a, n in zip(byauth.authors, byauth.n_papers):
 # ( 3 ) Make a filter for non-IATE papers
 # #################################################################
 
-iate = ['IATE', 'Experimental', 'Córdoba', 'Laprida', '854',
-        'X5000BGR',
+iate = ['IATE', 'Córdoba', 'Laprida 854', 'X5000BGR',
         'Universidad Nacional de Córdoba',
-        'Instituto de Astronomía Teórica y Experimental'
-       ]   
+        'Instituto de Astronomía Teórica y Experimental']
 
 f = partial(ads_utils.staff_institute, institution_keys=iate)
 isiate = list(map(f, all_papers))
 # save this filter for later
+pickle.dump(isiate, open('../dat/isiate.pk', 'wb'))
 
 # #################################################################
 # ( 4 ) Make dataframe for paper entries and apply iate filter
@@ -139,12 +136,14 @@ for i in range(nauth):
 
 df_papers = pd.DataFrame(Ps, columns=names)
 df_papers['author1'] = author1
- 
+
 # NOTE:
 # the df_papers dataframe constains repeated entries, but is usefull to
 # analyze metrics by author, using the field author1.
 
 df_papers_iate = df_papers[isiate]
+
+pickle.dump(df_papers_iate, open('../dat/df_papers_iate.pk', 'wb'))
 
 # NOTE:
 # Additional impact metrics can be obtained with more queries:
@@ -167,13 +166,15 @@ df_papers_iate = df_papers[isiate]
 # #################################################################
 
 dup = df_papers_iate.duplicated(subset='bibcode')
-ndup = [not l for l in dup]
+ndup = [not boolean for boolean in dup]
 
 
 # DataFrame with the cleaned list of papers
 df_papers_unique = df_papers_iate[ndup]
 
- 
+pickle.dump(df_papers_unique, open('../dat/df_papers_unique.pk', 'wb'))
+
+
 # #################################################################
 # ( 6 ) Filter non-indexed journals and proceedings
 # #################################################################
@@ -195,4 +196,6 @@ jnames = jnames.split('\n')
 jnames.pop()
 
 filt_top_journals = df_papers_unique.pub.isin(jnames)
-df_papers_unique_top = df_papers_unique[filt_top_journals] 
+df_papers_unique_top = df_papers_unique[filt_top_journals]
+
+pickle.dump(df_papers_unique_top, open('../dat/df_papers_unique_top.pk', 'wb'))

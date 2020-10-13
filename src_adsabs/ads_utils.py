@@ -85,8 +85,8 @@ def staff_institute(article, institution_keys):
         Keywords that the affilliation can contain for a given
         institution.
         Fro example, for the IATE:
-        institution_keys = ['IATE', 'Experimental', 'Córdoba', 
-                            'Laprida', '854', 'X5000BGR',
+        institution_keys = ['IATE', 'Córdoba', 
+                            'Laprida 854', 'X5000BGR',
                             'Universidad Nacional de Córdoba',
                             'Instituto de Astronomía Teórica y Experimental']          
     Returns

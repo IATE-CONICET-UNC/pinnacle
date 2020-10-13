@@ -45,3 +45,48 @@ aesthetics_a_cs["markersize"] = 1.3
 aesthetics_a_cs["markevery"] = 1
 aesthetics_a_cs["alpha"] = 0.2      
                                         
+
+def cycling_attrs():
+
+    import itertools as it
+
+    global icolors, imarkers, istyles, iwidths, ifaces, ialpha, imrkevry
+
+    ccolors = ["steelblue"] * 10 + ["peru"] * 10 + ["darkmagenta"] * 10
+    cmarkers = ["o", ".", "o", "x", "D"]
+    cstyles = ["-", "-", "--", "--", ":"]
+    cwidths = [2, 1, 1, 1, 2]
+    cwidths = [3] * 2 + [1] * 7
+    cfaces = ccolors[:]
+    for i, _ in enumerate(cfaces):
+        if i % 5 == 0 or i % 5 == 4:
+            cfaces[i] = "white"
+    calpha = [1.0] * 5 + [1.0] * 5 + [1.0] * 5
+    cmrkevry = [(2, 3), (3, 2), (1, 5)]
+
+    icolors = it.cycle(ccolors)
+    imarkers = it.cycle(cmarkers)
+    istyles = it.cycle(cstyles)
+    iwidths = it.cycle(cwidths)
+    ifaces = it.cycle(cfaces)
+    ialpha = it.cycle(calpha)
+    imrkevry = it.cycle(cmrkevry)
+
+
+def aes_attrs():
+
+    global icolors, imarkers, istyles, iwidths, ifaces, ialpha, imrkevry
+
+    aesthetics = {}
+    aesthetics["color"] = next(icolors)
+    aesthetics["linewidth"] = next(iwidths)
+    aesthetics["linestyle"] = next(istyles)
+    aesthetics["marker"] = next(imarkers)
+    aesthetics["markerfacecolor"] = next(ifaces)
+    aesthetics["markeredgewidth"] = 1
+    aesthetics["markersize"] = 6
+    aesthetics["markevery"] = next(imrkevry)
+    aesthetics["alpha"] = next(ialpha)  
+
+    return aesthetics
+ 
