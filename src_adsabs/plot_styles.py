@@ -52,7 +52,8 @@ def cycling_attrs():
 
     global icolors, imarkers, istyles, iwidths, ifaces, ialpha, imrkevry
 
-    ccolors = ["steelblue"] * 10 + ["peru"] * 10 + ["darkmagenta"] * 10
+    ccolors = ["steelblue"] * 5 + ["peru"] * 5 + ["darkmagenta"] * 5 +\
+              ["rebeccapurple"] * 5 + ["crimson"] * 5
     cmarkers = ["o", ".", "o", "x", "D"]
     cstyles = ["-", "-", "--", "--", ":"]
     cwidths = [2, 1, 1, 1, 2]

@@ -1,6 +1,59 @@
 import ads
+import pandas as pd
+from os import path
  
-def get_papers_by_authors(authors_list):
+
+
+def reduce_article_list(dfi, f):
+    """
+
+    """
+    Ps = []
+    for a, x in zip(dfi.authors, dfi.ppr_list):
+        for p in x:
+            if f(p):
+                t = [a, p.id, p.bibcode, p.title, p.aff, p.author, p.citation,
+                     p.pub, p.reference, p.year, p.pubdate,
+                     p.citation_count, p.read_count]
+                Ps.append(t)
+
+    names = ['author1', 'id', 'bibcode', 'title', 'aff', 'authors',
+             'citation', 'pub', 'reference', 'year', 'pubdate',
+             'citation_count', 'read_count']
+    df_papers = pd.DataFrame(Ps, columns=names)
+
+    return df_papers
+
+def ads_query(filename, rows_max=200, qreload=False, clobber=False):
+    """
+    query_ads, function
+
+    filename: string
+        location and name of a file with author search names
+
+    rows_max: int
+        maximum number of rows
+
+    """
+    with open(filename) as f:
+        auth_names = f.read()
+    auth_names = auth_names.split('\n')
+    auth_names = auth_names[:-1]
+
+    if path.isfile(filename):
+        if qreload:
+            byauth = get_papers_by_authors(auth_names, rows_max)
+            if clobber:
+                pickle.dump(byauth, open(filename, 'wb'))
+        else:
+            byauth = pickle.load(open(filename, 'rb'))
+    else:
+        byauth = get_papers_by_authors(auth_names, rows_max)
+        pickle.dump(byauth, open(filename, 'wb'))
+
+    return byauth
+
+def get_papers_by_authors(authors_list, rows_max=999):
     """
     get_papers_by_authors, function
 
@@ -26,7 +79,7 @@ def get_papers_by_authors(authors_list):
     authors = []
     for auth in authors_list:
         print(auth)
-        papers = list(ads.SearchQuery(author=auth, rows=500, fl=fl))
+        papers = list(ads.SearchQuery(author=auth, rows=rows_max, fl=fl))
         authors.append(papers)
 
     byauth = pd.DataFrame()

@@ -1,492 +1,64 @@
 The Astrophysical Journal
 Monthly Notices of the Royal Astronomical Society
-The Astronomical Journal
 Formation and Evolution of Galaxy Outskirts
-Galaxies
 Revista Mexicana de Astronomia y Astrofisica Conference Series
-Communications in Mathematical Physics
-Boletin de la Asociacion Argentina de Astronomia La Plata Argentina
-Journal of Composite Materials
-arXiv e-prints
-Zeitschrift Angewandte Mathematik und Mechanik
-American Institute of Physics Conference Series
-Observational Cosmology
-IEEE Sensors Journal
 Highlights of Astronomy
 Asociacion Argentina de Astronomia La Plata Argentina Book Series
-IAC Talks, Astronomy and Astrophysics Seminars from the Instituto de Astrof&iacute;sica de Canarias
 Large Scale Structure:  Tracks and Traces
-From Quantum Fluctuations to Cosmological Structures
-Archive of Applied Mechanics
-Materials Science and Engineering Conference Series
-TMS Middle East &mdash; Mediterranean Materials Congress on Energy and Infrastructure Systems (MEMA 2015)
-Journal of Computational and Theoretical Nanoscience
-Physica Scripta
-Image and Signal Processing for Remote Sensing XIV
-2008 Seismic Engineering Conference Commemorating the 1908 Messina and Reggio Calabria Earthquake
 19th Texas Symposium on Relativistic Astrophysics and Cosmology
-Examining the Big Bang and Diffuse Background Radiations
-Journal of Physics Conference Series
-Revista Mexicana de Astronomia y Astrofisica, vol. 26
-AGU Fall Meeting Abstracts
-Variable Stars and Galaxies, in honor of M. W. Feast on his retirement
-Revista Mexicana de Astronomia y Astrofisica
-IOP Conference Series: Earth and Environmental Science
-European Journal of Mechanics Solids
-Dynamics of Galaxies
-New Astronomy
 Astronomy and Astrophysics
-Physical Review Letters
-Sedimentology
-The Messenger
-Journal of Aerosol Science
-Aerosol Science Technology
-Journal of Vacuum Science Technology
-Remote Sensing
-Applied Surface Science
-The Astrophysical Journal Supplement Series
-Thin Solid Films
-Physical Review B
-Surface Science
-Formation and Evolution of the Galactic Bulge
-ISPRS International Journal of Geo-Information
-Environmental Science and Technology
-VizieR Online Data Catalog
-Atmospheric Chemistry & Physics
-Journal of Vacuum Science Technology B: Microelectronics and Nanometer Structures
-Applied Physics Letters
-Journal of Physics D Applied Physics
-Physical Chemistry Chemical Physics (Incorporating Faraday Transactions)
-Journal of Physics A Mathematical General
-International Astronomical Union Circular
-Nanoscale Research Letters
-Vacuum
-Lunar and Planetary Science Conference
-European Journal of Physics
-American Astronomical Society Meeting Abstracts #233
-AAS/Division for Planetary Sciences Meeting Abstracts #49
-Cosmic Flows Workshop
-Journal of Applied Physics
-Nuclear Instruments and Methods in Physics Research A
-International Journal of Bifurcation and Chaos
-Journal of Vacuum Science Technology A: Vacuum Surfaces and Films
-Chemical Enrichment of Intracluster and Intergalactic Medium
-Macromolecules
-Journal of Nanoparticle Research
-Applied Physics A: Materials Science & Processing
-PLoS ONE
-Acta Astronautica
-New Journal of Physics
-Physics Today
-Materials
-Atmospheric Chemistry & Physics Discussions
-NOAO Proposal
-Reducing the Costs of Spacecraft Ground Systems and Operations (RCSGSO)
-ECLIM 2002: 27th European Conference on Laser Interaction with Matter
-From Extrasolar Planets to Cosmology: The VLT Opening Symposium
-Gamma-Ray Bursts, 4th Hunstville Symposium
-The Observatory
-Proceedings of the 20th International Conference on Fluidized Bed Combustion
-The Physics Teacher
-Journal of Raman Spectroscopy
-Journal of Materials Science
-Metallurgical and Materials Transactions B
-Surface Science Letters
-Physics in Technology
-Sun: Mankind's Future Source of Energy
-The European Conference on Antennas and Propagation: EuCAP 2006
-Guidance, Navigation and Control Systems
-Galaxy Interactions at Low and High Redshift
-IAU Joint Discussion
-Biofabrication
-AIP Advances
-74th International Symposium on Molecular Spectroscopy
-Nature
-Celestial Mechanics and Dynamical Astronomy
 Icarus
-Chaos and Stability in Planetary Systems
+Celestial Mechanics and Dynamical Astronomy
+The Astronomical Journal
 Research in Astronomy and Astrophysics
-Chaotic Worlds: from Order to Disorder in Gravitational N-Body Dynamical Systems
-Transactions of the International Astronomical Union, Series A
 Complex Planetary Systems, Proceedings of the International Astronomical Union
-Extrasolar Planets. Formation, Detection and Dynamics
-IAU Colloq. 197: Dynamics of Populations of Planetary Systems
+Journal of Physics Conference Series
 International Journal of Astrobiology
-Workshop Series of the Asociacion Argentina de Astronomia
 EAS Publications Series
 Exoplanets: Detection, Formation and Dynamics
 The Astrophysics of Planetary Systems: Formation, Structure, and Dynamical Evolution
-Transactions of the International Astronomical Union, Series B
-35th COSPAR Scientific Assembly
-Bulletin of the Astronomical Society of Brazil
-IAU Colloq. 96: The Few Body Problem
 AAS/Division of Dynamical Astronomy Meeting #44
-European Planetary Science Congress 2010
-AAS/Division for Extreme Solar Systems Abstracts
 AAS/Division of Dynamical Astronomy Meeting #41
-Tenth Anniversary of 51 Peg-b: Status of and prospects for hot Jupiter studies
 Planetary and Space Science
-Impact of Modern Dynamics in Astronomy
 European Physical Journal Special Topics
-Earth Moon and Planets
 Protostars and Planets VI Posters
-A Comparison of the Dynamical Evolution of Planetary Systems
 EPSC-DPS Joint Meeting 2011
-The Dynamical Behaviour of our Planetary System
-Chaos, Resonance, and Collective Dynamical Phenomena in the Solar System
-Biophysical Journal
-Il Nuovo Cimento
-Nuovo Cimento B Serie
-Earth Surface Processes and Landforms
-Nuovo Cimento Serie
-Journal of Non Crystalline Solids
-Physical Review
-IEEE Transactions on Image Processing
-Memorie della Societa Astronomica Italiana
-Large Radio-Telescopes
-Proceedings of the Royal Society of London Series A
-International Journal of Applied Mechanics and Engineering
-Advances in Mechanisms Design
-Nuovo Cimento C Geophysics Space Physics C
-EGU General Assembly Conference Abstracts
-Zeitschrift Naturforschung Teil A
-IAU Colloq. 195: Outskirts of Galaxy Clusters: Intense Life in the Suburbs
-Mechanical Sciences
-Space Technology and Science
-3rd International Cosmic Ray Conference (ICRC3)
-Nuovo Cimento Lettere
-Scientific Reports
-Cosmic rays, solar particles and space research
 Fine Structure and Dynamics of the Solar Atmosphere
 Computer Physics Communications
-Terceras Jornadas de Astrof&iacute;sica Estelar
 General Relativity and Gravitation
-Physica Scripta Volume T
 Advances in Space Research
-IEEE Transactions on Plasma Science
-Proceedings of the National Academy of Science
-Chemical Physics
 AAS/Solar Physics Division Meeting
-Classical and Quantum Gravity
-Reports on Progress in Physics
-Nature Photonics
-Nature Physics
-Physical Review D
-Journal of Cosmology and Astroparticle Physics
-IEEE Journal of Quantum Electronics
+The Astrophysical Journal Supplement Series
 Astronomy and Computing
-Journal of Geophysical Research (Space Physics)
-Geomorphology
-Astrophysics and Space Science
-Nanotechnology
-Laser Physics Letters
-Optics Laser Technology
-International Journal of Earth Sciences
-Geophysical Research Letters
-Annales Geophysicae
-Astroparticle Physics
-Jets at All Scales
-Science of the Total Environment
-Physics and Chemistry of the Earth A
-astro2010: The Astronomy and Astrophysics Decadal Survey
-Physics of the Earth and Planetary Interiors
-From Interacting Binaries to Exoplanets: Essential Modeling Tools
-Coral Reefs
-Clays and Clay Minerals
-Tectonics
-Acta Oecologica
-The Tenth Marcel Grossmann Meeting.  On recent developments in theoretical and experimental general relativity, gravitation and relativistic field theories
-Review of Scientific Instruments
-Journal of Astronomical Data
-The Light Elements and their Evolution
-Journal of Magnetism and Magnetic Materials
-American Mineralogist
-Physics and Chemistry of the Earth
-Physica Status Solidi B Basic Research
-EPL (Europhysics Letters)
-IEEE Electron Device Letters
-Journal of Nuclear Materials
-Oecologia
-Physica B Condensed Matter
-The Physics of Cataclysmic Variables and Related Objects
-Journal of Double Star Observations
-American Astronomical Society Meeting Abstracts
-Journal of Luminescence
-Classical Nova Explosions
-XIXth Meeting of the Brazilian Astronomical Society
-IEEE Journal of Selected Topics in Applied Earth Observations and Remote Sensing
-IEEE Transactions on Geoscience and Remote Sensing
-XII Multifrequency Behaviour of High Energy Cosmic Sources Workshop (MULTIF2017)
-Journal of Geophysical Research (Atmospheres)
-Water Air and Soil Pollution
-Climate Research
-Computer Methods in Applied Mechanics and Engineering
-Radiation Effects and Defects in Solids
-Journal of Physics Condensed Matter
-American Astronomical Society Meeting Abstracts #221
-Journal of Physics and Chemistry of Solids
-ISPRS - International Archives of the Photogrammetry, Remote Sensing and Spatial Information Sciences
-Society of Photo-Optical Instrumentation Engineers (SPIE) Conference Series
-Annals of the New York Academy of Sciences
-American Geophysical Union
-High-Power Laser Materials Processing: Lasers, Beam Delivery, Diagnostics, and Applications IV
-SPIE Eco-Photonics 2011: Sustainable Design, Manufacturing, and Engineering Workforce Education for a Green Future
-Physics at LHC 2008
-AGU Spring Meeting Abstracts
-XII Advanced Computing and Analysis Techniques in Physics Research
-Revista Mexicana de Fisica Supplement
-Minor Planet Electronic Circulars
-EGS - AGU - EUG Joint Assembly
-IEEE Antennas and Wireless Propagation Letters
-Physica Status Solidi Applied Research
-Optimization Methods in Structural Design
-High-Power Laser Materials Processing: Lasers, Beam Delivery, Diagnostics, and Applications II
-The X-ray Universe 2011
-Twenty-First International Symposium on Space Terahertz Technology
-Very High Energy Phenomena in the Universe
-Science with Gemini: a South American perspective
-Spectrochimica Acta Part A: Molecular Spectroscopy
-Electronics Letters
-Journal of Geophysical Research (Oceans)
-Astronomical Data Analysis Software and Systems XXVII
-GRB Coordinates Network
-The Analyst
-High-Performance Computing in Geoscience and Remote Sensing VI
-Space Science Reviews
-Solid State Communications
-Atmospheric Science Letters
-The Third Hot-wiring the Transient Universe Workshop
-Journal of Hydrology
-Climate Dynamics
-Philosophical Transactions of the Royal Society of London Series A
-Quarterly Journal of the Royal Meteorological Society
-Geofisica Internacional
-Journal of Arid Environments
-Diamond and Related Materials
-Software and Cyberinfrastructure for Astronomy V
-Nonlinear Processes in Geophysics
-Semiconductor Science Technology
-Tracing Cosmic Evolution with Galaxy Clusters
-Astrophysics Source Code Library
-Observatory Operations: Strategies, Processes, and Systems VII
-Physics of Plasmas
-Chemical Physics Letters
-Theoretical and Applied Climatology
-Portable Synchrotron Light Sources and Advanced Applications
-Helgoland Marine Research
-IEEE Photonics Technology Letters
-APS April Meeting Abstracts
-Optical System Alignment, Tolerancing, and Verification III
-Electronic Component Conference - EECC'97
-Journal of Electronic Materials
-Characterization of Metals and Alloys
-IEEE Signal Processing Letters
-Ad Hoc Networks
-European Physical Journal D
-International Journal for Numerical Methods in Engineering
-APS March Meeting Abstracts
-Journal de Chimie Physique
-Medical Physics
-European Space Components Conference : ESCCON 2000
-Contributions to the XIV.0 Scientific Meeting (virtual) of the Spanish Astronomical Society
-Journal of the Electrochemical Society
-ECS Transactions
-Solar Energy
 Astronomy and Astrophysics Supplement Series
-International Cosmic Ray Conference
-Experimental Astronomy
-34th International Cosmic Ray Conference (ICRC2015)
-Stellar Populations as Building Blocks of Galaxies
-IX Latin American Regional IAU Meeting, "Focal Points in Latin American Astronomy"
-HST Proposal
-PLoS Computational Biology
-Astroinformatics
+American Astronomical Society Meeting Abstracts
+Nature
 IAU Symposium
 Young Stars &amp; Planets Near the Sun
-The Cool Universe: Observing Cosmic Dawn
 Stellar Populations - Planning for the Next Decade
-Galaxies in Isolation: Exploring Nature Versus Nurture
-Recycling Intergalactic and Interstellar Matter
-Stars, Gas and Dust in Galaxies: Exploring the Links
-Cosmic Frontiers
-Numerical Simulations in Astrophysics
-Roentgenstrahlung from the Universe
-Galaxy Disks and Disk Galaxies
-Peremennye Zvezdy Prilozhenie
 Basic Space Sciences
-Clustering at High Redshift
-Dynamics of Galaxies and Their Molecular Cloud Distributions
-Clusters and Superclusters of Galaxies
-Large-scale Structures and Peculiar Motions in the Universe
-Large Scale Structures of the Universe
+AGU Fall Meeting Abstracts
 Groups of Galaxies in the Nearby Universe
-SF2A-2018: Proceedings of the Annual meeting of the French Society of Astronomy and Astrophysics
-Diversis Mundi: The Solar System in an Exoplanetary Context
-Astronomy in Latin America
+Astrophysics and Space Science
 AAS/Division of Dynamical Astronomy Meeting
 EPSC-DPS Joint Meeting 2019
-Science
-Physics Letters B
-Journal of Power Sources
-Zeitschrift fur Physik C Particles and Fields
-European Physical Journal Plus
-IEEE Transactions on Microwave Theory Techniques
-Journal of Volcanology and Geothermal Research
-Superconductor Science Technology
-Journal of Molecular Spectroscopy
-IEEE Transactions on Magnetics
-IEEE Transactions on Education
-Journal of Materials Research
-Journal of Chemical Education
-Physica C Superconductivity
-Journal of Chemical Physics
-Nuclear Instruments and Methods in Physics Research B
-International Journal of Quantum Chemistry
-Superlattices and Microstructures
-Deep Sea Research Part I: Oceanographic Research
-IAU Special Session
-Philosophical Magazine
-Surface Review and Letters
-Second Conference on Stellar Astrophysics
-Applied Spectroscopy
-Journal of the American Association of Variable Star Observers (JAAVSO)
-IEEE Transactions on Applied Superconductivity
-L'Astronomie
-APS Texas Sections Fall Meeting Abstracts
-Geological Society of London Special Publications
-Revista Mexicana de Fisica
-Pramana
-Low Temperature Physics
-Nuclear Data Sheets
-Advanced Technology - Particle Physics
-Superconducting Superlattices II: Native and Artificial
-Lecture Notes in Physics, Berlin Springer Verlag
-Journal of Polymer Science B Polymer Physics
-NASA STI/Recon Technical Report N
-Chemosphere
-Progress Report
-Presented at the World Hydrogen Energy Conf
-2d International Colloquium on Drops and Bubbles
-American Astronomical Society Meeting Abstracts #223
-Hydrogen Energy Progress
-Transient Name Server Classification Report
-Experimental Apparatus for High Energy Particle Physics and Astrophysics
-Nature Communications
-Publications of the Astronomical Society of Australia
-Galaxy Evolution across the Hubble Time
-The Dynamics, Structure &amp; History of Galaxies: A Workshop in Honour of Professor Ken Freeman
-The Zeldovich Universe: Genesis and Growth of the Cosmic Web
-Journal of High Energy Physics
-European Physical Journal C
-Physical Review C
-Nuclear Physics B
-Journal of Instrumentation
-Physical Review A
-Journal of Solid State Chemistry France
-Plasma Science and Technology
-Natural Hazards and Earth System Sciences
-Physica Status Solidi C Current Topics
-Journal of Physics B Atomic Molecular Physics
-International Journal of Mass Spectrometry
-Journal of Quantitative Spectroscopy and Radiative Transfer
-International Journal of Mass Spectrometry and Ion Processes
-Atmospheric Research
-Plasma Sources Science Technology
-Nanoscale
-Surveys in Geophysics
-European Physical Journal Applied Physics
-Nuclear Physics A
-Physics Letters A
-Earth and Space Science
-APS Division of Atomic, Molecular and Optical Physics Meeting Abstracts
-Solid State Sciences
-Application of Accelerators in Research and Industry: Twentieth International Conference
-Physical Review E
-European Planetary Science Congress
-Space Power
-Physics Procedia
-Proceedings of Xth Quark Confinement and the Hadron Spectrum (Confinement X). 8-12 October
-Journal of Computational and Applied Mathematics
-Plasma and Fusion Science: 16th IAEA Technical Meeting on Research using Small Fusion Devices
-18th IEEE Particle Accelerator Conference
-Hyperfine Interactions
-APS Meeting Abstracts
-Proceedings of the XXII. International Workshop on Deep-Inelastic Scattering and Related Subjects (DIS2014). 28 April - 2 May
-Atomic and Molecular Physics
-Dissociative Recombination: Theory, Experiment, and Applications
-Zeitschrift fur Physik D Atoms Molecules Clusters
-Journal of Polymer Science A Polymer Chemistry
-Physical Review Research
-6th International Conference on the Physics of Highly charged ions
-Molecular Physics
-Journal of Physical Chemistry A
-Marine Ecology Progress Series
-Minor Planet Circulars
-SF2A-2004: Semaine de l'Astrophysique Francaise
-Astrophysical Letters and Communications
+New Astronomy
+The Messenger
+American Institute of Physics Conference Series
 Astrophysics and Space Science Supplement
-Organizations, People and Strategies in Astronomy Vol. 2
-Acta Astronomica
-Solar Physics
-Baltic Astronomy
-Journal of Geophysical Research
-Space Weather
-Publications of the Astronomical Society of the Pacific
-9th LISA Symposium
-Nuclear Physics B Proceedings Supplements
-Nanophotonics
-Optics Letters
-Astronomische Nachrichten
-Astronomical and Astrophysical Transactions
-International Journal of Modern Physics D
-The Magellanic System: Stars, Gas, and Galaxies
-19th International Cosmic Ray Conference (ICRC19), Volume 5
-Fifty Years of Wide Field Studies in the Southern Hemisphere: Resolved Stellar Populations of the Galactic Bulge and Magellanic Clouds
-Twelfth Marcel Grossmann Meeting on General Relativity
-Solar Wind Nine
-IAU Colloq. 144: Solar Coronal Structures
-Journal of the Optical Society of America B Optical Physics
-Star Clusters: Basic Galactic Building Blocks Throughout Time and Space
-19th International Cosmic Ray Conference (ICRC19), Volume 4
-Memorie della Societa Astronomica Italiana Supplementi
-Globular Clusters - Guides to Galaxies
-36th COSPAR Scientific Assembly
-29th International Cosmic Ray Conference (ICRC29), Volume 2
-EGS General Assembly Conference Abstracts
-34th COSPAR Scientific Assembly
-Cosmic Physics in the Year 2000
-Solar-Terrestrial Relationships and the Earth Environment in the last Millennia
-Nonlinear Frequency Generation and Conversion: Materials and Devices XVII
-Radiation Measurements
-38th COSPAR Scientific Assembly
-21st European Cosmic Ray Symposium
-Solar-Terrestrial Energy Program
-Seventh European Meeting on Solar Physics
-LPI Contributions
-Solar and Interplanetary Dynamics
-Unknown
-COSPAR, 20th Plenary Meeting
-12th International Cosmic Ray Conference (ICRC12), Volume 3
 Bulletin of the American Astronomical Society
 International Journal of Modern Physics A
-Nuclear and Particle Physics Proceedings
-Geophysical Journal International
-Presented at the 13th Biomass Thermochem. Conversion Contractors Meeting
-Journal of Physics G Nuclear Physics
-EOS Transactions
-Geology
-Bulletin of Volcanology
-Journal of Crystal Growth
-Modern Physics Letters A
-Physica D Nonlinear Phenomena
-American Journal of Science
-Living Reviews in Relativity
-Open European Journal on Variable Stars
+Journal of High Energy Physics
 IAU General Assembly
 Living Around Active Stars
-Journal of Computational Physics
-Cosmic Magnetic Fields: From Planets, to Stars and Galaxies
-Magnetic Fields in the Universe III - From Laboratory and Stars to Primordial Structures
-The Interplay Among Black Holes, Stars and ISM in Galactic Nuclei
-Fornax, Virgo, Coma et al., Stellar Systems in High Density Environments
+Publications of the Astronomical Society of the Pacific
 New Research on Astrophysics, Neutron Stars and Galaxy Clusters
+From Extrasolar Planets to Cosmology: The VLT Opening Symposium
+Gamma-Ray Bursts, 4th Hunstville Symposium
+Acta Astronomica
+Baltic Astronomy
+Astronomische Nachrichten
+The Magellanic System: Stars, Gas, and Galaxies
+Star Clusters: Basic Galactic Building Blocks Throughout Time and Space
+Globular Clusters - Guides to Galaxies
+I Cosmosul: Cosmology and Gravitation in the Southern Cone
