@@ -286,3 +286,28 @@ fout = ("../plt/top_vs_all.png")
 fig.savefig(fout)
 plt.close()  
 
+# Violin plot for number of authors vs. year ························
+
+nauth = []
+for i, p in df_papers_inst.iterrows():
+    nauth.append(len(p.authors))
+
+fig = plt.figure(figsize=(10, 5))
+ax = fig.add_subplot()
+
+years = [int(y) for y in df_papers_inst.year.values]
+
+ax.scatter(years, nauth)
+ax.set_yscale('log')
+
+ax.set_title('number of authors per year')
+ax.set_xlabel('year')
+ax.set_ylabel('N authors')
+
+fout = ("../plt/year_nauth.png")
+fig.savefig(fout)
+plt.close()  
+
+
+
+
