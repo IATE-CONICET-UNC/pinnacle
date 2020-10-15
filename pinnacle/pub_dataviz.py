@@ -262,3 +262,18 @@ class pub_dataviz:
         fout = ("../plt/year_nauth.png")
         fig.savefig(fout)
         plt.close()  
+
+    def plot_all(self):
+        '''
+        Make all the plots.
+
+        '''
+        self.papers_histogram(top=True)                              
+        self.papers_histogram(top=False)                             
+        self.cumulative_per_author(top=False, normalize_first=False) 
+        self.cumulative_per_author(top=False, normalize_first=True)  
+        self.cumulative_per_author(top=True, normalize_first=False)  
+        self.cumulative_per_author(top=True, normalize_first=True)   
+        self.authors_citations_years()                               
+        self.top_proceedings()                                       
+ 

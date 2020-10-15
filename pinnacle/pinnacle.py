@@ -1,10 +1,11 @@
 '''
 PINNACLE
 
-Publications from an Institute: Numbers, Numbers, Authors,
-Citations, Lists and Expansion.
+Publications from an Institute: Numbers, Networks, Authors and
+Citations Looking for Excellence.
 
 MIT Licence, full text:
+https://github.com/IATE-CONICET-UNC/iate_audit/blob/master/LICENSE
 '''
 
 import ads
