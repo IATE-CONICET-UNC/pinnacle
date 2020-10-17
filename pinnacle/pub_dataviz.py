@@ -1,3 +1,8 @@
+"""
+pub_dataviz: Visualization tools for PINNACLE
+
+"""
+
 import pinnacle
 from matplotlib import pyplot as plt
 from plot_styles import *

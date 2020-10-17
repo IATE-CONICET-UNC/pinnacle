@@ -1,5 +1,5 @@
 pub_dataviz module
-===============
+===================
 
 .. automodule:: pub_dataviz
    :members:

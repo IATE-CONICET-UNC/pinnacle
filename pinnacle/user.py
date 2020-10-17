@@ -32,7 +32,6 @@ if config['data_source'] == 'ads':
     # QUERY AND DOWNLOAD
     # load staff member names
     staff = iate.load_staff(interactive=True)
-    staf = staff[4:6]
     # query and download from ADS server
     DF = iate.download_inst(staf)
     iate_strings = ['IATE', 'Córdoba', 'Laprida 854', 'X5000BGR',
