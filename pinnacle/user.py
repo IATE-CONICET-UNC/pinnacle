@@ -1,5 +1,5 @@
-import pinnacle
-from pub_dataviz import pub_dataviz
+from pinnacle import pinnacle
+from pinnacle import pub_dataviz
 
 config = {}
 config['dir_data'] = '../dat'  # directory for data
@@ -60,4 +60,3 @@ viz.cumulative_per_author(top=True, normalize_first=True)
 
 viz.authors_citations_years()
 viz.top_proceedings()
-

@@ -1,11 +1,15 @@
-"""
-pub_dataviz: Visualization tools for PINNACLE
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+# PUB_DATAVIZ: Visualization tools for PINNACLE
+# Copyright (c) 2020, Marcelo Lares
+#
+# MIT License:
+# https://github.com/IATE-CONICET-UNC/pinnacle/blob/master/LICENSE
 
-"""
-
-import pinnacle
+from pinnacle import pinnacle
 from matplotlib import pyplot as plt
-from plot_styles import *
+from pinnacle.plot_styles import *
 
 import numpy as np
 import pickle

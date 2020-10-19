@@ -21,7 +21,14 @@ The process basically consists on creating four datasets:
 Installation
 ------------
 
-Download the code from the GitHub page
+Download the last version of the code from the GitHub page, and run::
+
+   pip install .
+
+or, alternatively, install the latest stable version from the Pithon
+Package Index::
+
+   pip install pinnacle-pub
 
 
 The analysis of a set of authors can be made easily with the following
@@ -31,9 +38,9 @@ First, load the package:
 
 .. code-block:: python
 
-   import pinnacle
+   from pinnacle import pinnacle
 
-For the configuration, create a dicionary with the following fields:
+For the configuration, create a dictionary with the following fields:
 
 .. code-block:: python
 
@@ -97,7 +104,7 @@ The plots can be run as follows:
 
 .. code-block:: python
 
-   from pub_dataviz import pub_dataviz
+   from pinnacle import pub_dataviz
 
    viz = pub_dataviz(iate)
 

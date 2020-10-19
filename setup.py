@@ -27,6 +27,9 @@ print(PATH)
 
 REQUIREMENTS = [
     "ads",
+    "numpy",
+    "pandas",
+    "pytest",
     "openpyxl"]
 
 with open(PATH / "README.rst") as fp:

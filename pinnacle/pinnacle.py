@@ -1,12 +1,14 @@
-"""
-PINNACLE.
-
-Publications from an Institute: Numbers, Networks, Authors and
-Citations Looking for Excellence.
-
-MIT Licence, full text:
-https://github.com/IATE-CONICET-UNC/iate_audit/blob/master/LICENSE
-"""
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+#
+# PINNACLE.
+#
+# Publications from an Institute: Numbers, Networks, Authors and
+# Citations Looking for Excellence.
+#
+# Copyright (c) 2020, Marcelo Lares
+# MIT License:
+# https://github.com/IATE-CONICET-UNC/pinnacle/blob/master/LICENSE
 
 import ads
 import pandas as pd
@@ -17,8 +19,7 @@ class inst_adsentries:
     """
     inst_adsentries (class): Statistics of publications in an Institute.
 
-    Methods
-    -------
+    Several methods to download and analyze bibliographic data.
     """
 
     def __init__(self, config):
