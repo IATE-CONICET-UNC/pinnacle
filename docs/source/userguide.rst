@@ -21,16 +21,16 @@ The process basically consists on creating four datasets:
 Installation
 ------------
 
-
-To install the latest stable version from the Pithon
+To install the `latest stable <https://pypi.org/project/pinnacle-pub/>`_ version from the Python
 Package Index::
 
-   pip install pinnacle-pub
+   pip install pinnacle_pub
 
-To install the development version, download the last version of the code from the GitHub page, and run::
+To install the development version, 
+`download the last version <https://github.com/IATE-CONICET-UNC/pinnacle>`_
+of the code from the GitHub page, and run::
 
    pip install .
-
 
 
 The analysis of a set of authors can be made easily with the following

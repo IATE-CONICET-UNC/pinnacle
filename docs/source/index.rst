@@ -6,10 +6,6 @@
     :width: 200px  
     :align: center
 
-.. image:: https://readthedocs.org/projects/pinnacle/badge/?version=latest
-:target: https://pinnacle.readthedocs.io/en/latest/?badge=latest
-:alt: Documentation Status
-
 .. image:: https://travis-ci.org/IATE-CONICET-UNC/pinnacle.svg?branch=master
     :target: https://travis-ci.org/IATE-CONICET-UNC/pinnacle
 
