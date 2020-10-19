@@ -7,9 +7,9 @@
 # MIT License:
 # https://github.com/IATE-CONICET-UNC/pinnacle/blob/master/LICENSE
 
-from pinnacle import pinnacle
+import pinnacle
 from matplotlib import pyplot as plt
-from pinnacle.plot_styles import *
+from plot_styles import *
 
 import numpy as np
 import pickle

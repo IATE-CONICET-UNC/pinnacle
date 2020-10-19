@@ -52,7 +52,7 @@ with open(PATH / "pinnacle" / "__init__.py") as fp:
 
 def do_setup():
     setup(
-        name="pinnacle-pub",
+        name="pinnacle_pub",
         version=VERSION,
         description=DESCRIPTION,
         long_description=LONG_DESCRIPTION,
