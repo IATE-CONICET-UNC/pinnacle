@@ -7,9 +7,9 @@
 # MIT License:
 # https://github.com/IATE-CONICET-UNC/pinnacle/blob/master/LICENSE
 
-import pinnacle
+from pinnacle import pinnacle
 from matplotlib import pyplot as plt
-from plot_styles import *
+from pinnacle.plot_styles import *
 
 import numpy as np
 import pickle
@@ -20,9 +20,7 @@ class pub_dataviz:
 
     def __init__(self, inst):
         '''
-        Initialize an instance of a visualizer
-
-        Plots: (methods)
+        Initialize an instance of a visualizerbecariosthods)
         ----------------
 
         - papers_histogram: histogram of the years of publications
@@ -36,6 +34,7 @@ class pub_dataviz:
         '''
 
         self.inst = inst
+        self.config = inst.config
 
     def papers_histogram(self, top=False):
         '''
@@ -73,11 +72,11 @@ class pub_dataviz:
         if top:
             ax.set_ylabel('number of papers')
             ax.set_title('publications by IATE')
-            fout = ("../plt/papers_per_year_top.png")
+            fout = (f"{self.config.dir_plot}/papers_per_year_top.png")
         else:
             ax.set_ylabel('number of published works')
             ax.set_title('papers published by IATE')
-            fout = ("../plt/papers_per_year_all.png")
+            fout = (f"{self.config.dir_plot}/papers_per_year_all.png")
 
         fig.savefig(fout)
         plt.close()
@@ -94,17 +93,20 @@ class pub_dataviz:
              Normalize to the year of the first publication
 
         '''
+        import datetime
+        now = datetime.datetime.now()
+        current_year = now.year
 
         if normalize_first:
             tedges = np.arange(-0.5, 20.5, 1)
             tmeans = np.arange(0, 20, 1)
-            fout = ("../plt/papers_by_author_zero.png")
+            fout = (f"{self.config.dir_plot}/papers_by_author_zero.png")
             titlen = 'normalized to first'
             xlab = 'years from first publication'
         else:
             tedges = np.arange(1995, 2021, 1)
             tmeans = np.arange(1995, 2020, 1)
-            fout = ("../plt/papers_by_author.png")
+            fout = (f"{self.config.dir_plot}/papers_by_author_year.png")
             titlen = ''
             xlab = 'year'
 
@@ -129,7 +131,11 @@ class pub_dataviz:
             if len(y)==0:
                 continue
             y = np.array(y)
-            y = y - min(y)
+            if normalize_first:
+                active = current_year - min(y) + 1
+                y = y - min(y)
+                tedges = np.arange(-0.5, active + 0.5, 1)
+                tmeans = np.arange(0, active, 1)
 
             H = np.histogram(y, bins=tedges)
             ac = H[0].cumsum()
@@ -195,7 +201,7 @@ class pub_dataviz:
         ax.set_ylabel('Number of citations + 1')
         ax.legend(loc='center left', bbox_to_anchor=(1.1, 0.5), labelspacing=3)
 
-        fout = ("../plt/nauth_ncitas_year.png")
+        fout = (f"{self.config.dir_plot}/nauth_ncitas_year.png")
         fig.savefig(fout)
         plt.close()  
          
@@ -231,7 +237,7 @@ class pub_dataviz:
         ax.set_xlabel('all works')
         ax.set_ylabel('papers top')
 
-        fout = ("../plt/top_vs_all.png")
+        fout = (f"{self.config.dir_plot}/top_vs_all.png")
         fig.savefig(fout)
         plt.close()           
 
@@ -268,7 +274,7 @@ class pub_dataviz:
         ax.set_xlabel('year')
         ax.set_ylabel('N authors')
 
-        fout = ("../plt/year_nauth.png")
+        fout = (f"{self.config.dir_plot}/year_nauth.png")
         fig.savefig(fout)
         plt.close()  
 
@@ -285,4 +291,3 @@ class pub_dataviz:
         self.cumulative_per_author(top=True, normalize_first=True)   
         self.authors_citations_years()                               
         self.top_proceedings()                                       
- 

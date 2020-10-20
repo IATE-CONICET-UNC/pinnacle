@@ -12,6 +12,7 @@ https://github.com/IATE-CONICET-UNC/pinnacle/blob/master/LICENSE
 import ads
 import pandas as pd
 import pickle
+import numpy as np
 
 
 class inst_adsentries:
@@ -34,7 +35,7 @@ class inst_adsentries:
         pub_inst_all:
         pub_inst_top:
         """
-        self.config = config
+        self.config = config.config
         self.staff = []
 
         self.pub_auth_all = {}
@@ -71,8 +72,8 @@ class inst_adsentries:
         """
         self.sanity_check()
 
-        fname_staff = ''.join([self.config['dir_data'], '/',
-                               self.config['fname_staff']])
+        fname_staff = ''.join([self.config.dir_data, '/',
+                               self.config.fname_staff])
 
         with open(fname_staff) as f:
             auth_names = f.read()
@@ -91,23 +92,25 @@ class inst_adsentries:
         """
         self.sanity_check()
 
-        fname_pub_auth_all = ''.join([self.config['dir_data'], '/',
-                                      self.config['fname_pub_auth_all'],
+        fname_pub_auth_all = ''.join([self.config.dir_data, '/',
+                                      self.config.fname_pub_auth_all,
                                       '.pk'])
-        fname_pub_auth_top = ''.join([self.config['dir_data'], '/',
-                                      self.config['fname_pub_auth_top'],
+        fname_pub_auth_top = ''.join([self.config.dir_data, '/',
+                                      self.config.fname_pub_auth_top,
                                       '.pk'])
-        fname_pub_inst_all = ''.join([self.config['dir_data'], '/',
-                                      self.config['fname_pub_inst_all'],
+        fname_pub_inst_all = ''.join([self.config.dir_data, '/',
+                                      self.config.fname_pub_inst_all,
                                       '.pk'])
-        fname_pub_inst_top = ''.join([self.config['dir_data'], '/',
-                                      self.config['fname_pub_inst_top'],
+        fname_pub_inst_top = ''.join([self.config.dir_data, '/',
+                                      self.config.fname_pub_inst_top,
                                       '.pk'])
 
         self.pub_auth_all = pickle.load(open(fname_pub_auth_all, 'rb'))
         self.pub_auth_top = pickle.load(open(fname_pub_auth_top, 'rb'))
         self.pub_inst_all = pickle.load(open(fname_pub_inst_all, 'rb'))
         self.pub_inst_top = pickle.load(open(fname_pub_inst_top, 'rb'))
+
+        self.staff = self.pub_auth_all['author1'].unique()
 
     def download_inst(self, authors_list=[], rows_max=200):
         """
@@ -127,12 +130,14 @@ class inst_adsentries:
            A data frame containing the list of authors, number of papers
            and the list of papers as "Article" instances.
         """
+        self.staff = authors_list
         fl = ['id', 'bibcode', 'title', 'citation_count',
               'aff', 'author', 'citation', 'pub', 'reference',
               'metrics', 'year', 'read_count', 'pubdate']
 
         authors = []
         for auth in authors_list:
+            print(f"searching ADS for author: {auth}")
             papers = list(ads.SearchQuery(author=auth, rows=rows_max, fl=fl))
             authors.append(papers)
 
@@ -157,24 +162,58 @@ class inst_adsentries:
         self.sanity_check()
         self.data_loaded_check()
 
-        fname_pub_auth_all = ''.join([self.config['dir_data'], '/',
-                                      self.config['pub_auth_all'],
-                                      self.config['pub_auth_all'], '.pk'])
-        fname_pub_auth_top = ''.join([self.config['dir_data'], '/',
-                                      self.config['pub_auth_top'],
-                                      self.config['pub_auth_top'], '.pk'])
-        fname_pub_inst_all = ''.join([self.config['dir_data'], '/',
-                                      self.config['pub_inst_all'],
-                                      self.config['pub_inst_all'], '.pk'])
-        fname_pub_inst_top = ''.join([self.config['dir_data'], '/',
-                                      self.config['pub_inst_top'],
-                                      self.config['pub_inst_top'], '.pk'])
+        fname_pub_auth_all = ''.join([self.config.dir_data, '/',
+                                      self.config.fname_pub_auth_all,
+                                      '.pk'])
+        fname_pub_auth_top = ''.join([self.config.dir_data, '/',
+                                      self.config.fname_pub_auth_top,
+                                      '.pk'])
+        fname_pub_inst_all = ''.join([self.config.dir_data, '/',
+                                      self.config.fname_pub_inst_all,
+                                      '.pk'])
+        fname_pub_inst_top = ''.join([self.config.dir_data, '/',
+                                      self.config.fname_pub_inst_top,
+                                      '.pk'])
 
         pickle.dump(self.pub_auth_all, open(fname_pub_auth_all, 'wb'))
         pickle.dump(self.pub_auth_top, open(fname_pub_auth_top, 'wb'))
         pickle.dump(self.pub_inst_all, open(fname_pub_inst_all, 'wb'))
         pickle.dump(self.pub_inst_top, open(fname_pub_inst_top, 'wb'))
 
+    def save_table(self, table_name):
+        """
+        Write bibliographic data to a XLSX file.
+
+        The name of the file is taken from ?
+        """
+        import pandas as pd
+
+        self.sanity_check()
+        self.data_loaded_check()               
+                   
+        writer = pd.ExcelWriter(table_name)
+
+        tedges = np.arange(1999.5, 2021.5, 1)
+        years = np.arange(2000, 2021, 1)     
+         
+        dfa = pd.DataFrame()
+        dfa['year'] = years
+
+        auth_names = list(self.pub_auth_all.author1.unique())
+        for a in auth_names:
+
+            df = self.pub_auth_all[self.pub_auth_all['author1'].isin([a])]
+            y = [int(i) for i in df.year.values]
+            if len(y)==0:
+                H = [[0]*(len(tedges)-1), None]
+            else:
+                y = np.array(y)
+                H = np.histogram(y, bins=tedges)
+            dfa[a] = H[0]
+
+        dfa.to_excel(writer, sheet_name='all')
+        writer.save()
+                                                 
     def journal_quality(self):
         """
         Filter non-indexed journals and proceedings.
