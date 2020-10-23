@@ -37,7 +37,7 @@ class inst_adsentries:
         """
         self.config = config.config
         self.staff = []
-
+        self.history = {}
         self.pub_auth_all = {}
         self.pub_auth_top = {}
         self.pub_inst_all = {}
@@ -63,6 +63,26 @@ class inst_adsentries:
         COMPLETAR.
         """
         return True
+
+    def load_history(self, n_list, year_start):
+        """
+        Load history for the number of staff members for an institute.
+
+        if interactive (bool) the list is returned.
+        """
+        self.sanity_check()
+
+        #thisyear = datetime.datetime.now().year
+
+        year_end = year_start + len(n_list)
+        a = pd.to_datetime(range(year_start, year_end), format='%Y').year
+
+        df = pd.DataFrame()
+
+        df['pop'] = n_list
+        df.index = a
+
+        self.history = df
 
     def load_staff(self, interactive=True):
         """
@@ -93,24 +113,35 @@ class inst_adsentries:
         self.sanity_check()
 
         fname_pub_auth_all = ''.join([self.config.dir_data, '/',
-                                      self.config.fname_pub_auth_all,
+                                      self.config.fname_pub_auth_all,'_',
+                                      self.config.experiment_id,
                                       '.pk'])
         fname_pub_auth_top = ''.join([self.config.dir_data, '/',
-                                      self.config.fname_pub_auth_top,
+                                      self.config.fname_pub_auth_top,'_',
+                                      self.config.experiment_id,
                                       '.pk'])
         fname_pub_inst_all = ''.join([self.config.dir_data, '/',
-                                      self.config.fname_pub_inst_all,
+                                      self.config.fname_pub_inst_all,'_',
+                                      self.config.experiment_id,
                                       '.pk'])
         fname_pub_inst_top = ''.join([self.config.dir_data, '/',
-                                      self.config.fname_pub_inst_top,
+                                      self.config.fname_pub_inst_top,'_',
+                                      self.config.experiment_id,
                                       '.pk'])
-
         self.pub_auth_all = pickle.load(open(fname_pub_auth_all, 'rb'))
         self.pub_auth_top = pickle.load(open(fname_pub_auth_top, 'rb'))
         self.pub_inst_all = pickle.load(open(fname_pub_inst_all, 'rb'))
         self.pub_inst_top = pickle.load(open(fname_pub_inst_top, 'rb'))
+        
+        fname_pub_history = ''.join([self.config.dir_data, '/history_',
+                                      self.config.experiment_id, '.pk'])
+        self.history = pickle.load(open(fname_pub_history, 'rb'))
 
-        self.staff = self.pub_auth_all['author1'].unique()
+        fname_pub_staff = ''.join([self.config.dir_data, '/staff_',
+                                      self.config.experiment_id, '.pk'])
+        self.staff = pickle.load(open(fname_pub_staff, 'rb'))
+
+        #self.staff = self.pub_auth_all['author1'].unique()
 
     def download_inst(self, authors_list=[], rows_max=200):
         """
@@ -163,24 +194,36 @@ class inst_adsentries:
         self.data_loaded_check()
 
         fname_pub_auth_all = ''.join([self.config.dir_data, '/',
-                                      self.config.fname_pub_auth_all,
+                                      self.config.fname_pub_auth_all,'_',
+                                      self.config.experiment_id,
                                       '.pk'])
         fname_pub_auth_top = ''.join([self.config.dir_data, '/',
-                                      self.config.fname_pub_auth_top,
+                                      self.config.fname_pub_auth_top,'_',
+                                      self.config.experiment_id,
                                       '.pk'])
         fname_pub_inst_all = ''.join([self.config.dir_data, '/',
-                                      self.config.fname_pub_inst_all,
+                                      self.config.fname_pub_inst_all,'_',
+                                      self.config.experiment_id,
                                       '.pk'])
         fname_pub_inst_top = ''.join([self.config.dir_data, '/',
-                                      self.config.fname_pub_inst_top,
+                                      self.config.fname_pub_inst_top,'_',
+                                      self.config.experiment_id,
                                       '.pk'])
-
         pickle.dump(self.pub_auth_all, open(fname_pub_auth_all, 'wb'))
         pickle.dump(self.pub_auth_top, open(fname_pub_auth_top, 'wb'))
         pickle.dump(self.pub_inst_all, open(fname_pub_inst_all, 'wb'))
         pickle.dump(self.pub_inst_top, open(fname_pub_inst_top, 'wb'))
 
-    def save_table(self, table_name):
+        fname_pub_history = ''.join([self.config.dir_data, '/history_',
+                                      self.config.experiment_id, '.pk'])
+        pickle.dump(self.history, open(fname_pub_history, 'wb'))
+
+        fname_pub_staff = ''.join([self.config.dir_data, '/staff_',
+                                      self.config.experiment_id, '.pk'])
+        pickle.dump(self.staff, open(fname_pub_staff, 'wb'))
+
+    def save_table(self, table_name=None, 
+                   year_start=None, year_end=None):
         """
         Write bibliographic data to a XLSX file.
 
@@ -191,17 +234,28 @@ class inst_adsentries:
         self.sanity_check()
         self.data_loaded_check()               
                    
+        if table_name is None:
+            table_name = f"{self.config.dir_data}/table_{self.config.experiment_id}.xlsx"
+
+        print(table_name)
+
         writer = pd.ExcelWriter(table_name)
 
-        tedges = np.arange(1999.5, 2021.5, 1)
-        years = np.arange(2000, 2021, 1)     
+        if (year_start is not None) and (year_end is not None):
+            tedges = np.arange(1999.5, 2021.5, 1)
+            years = np.arange(2000, 2021, 1)     
+        else:
+            tedges = np.arange(self.history.index[0] - 0.5, 
+                               self.history.index[-1]+ 1.5, 1)
+            years = np.arange(self.history.index[0], 
+                               self.history.index[-1]+ 1, 1) 
          
         dfa = pd.DataFrame()
         dfa['year'] = years
 
+        Ht = np.zeros(len(years))
         auth_names = list(self.pub_auth_all.author1.unique())
         for a in auth_names:
-
             df = self.pub_auth_all[self.pub_auth_all['author1'].isin([a])]
             y = [int(i) for i in df.year.values]
             if len(y)==0:
@@ -210,9 +264,27 @@ class inst_adsentries:
                 y = np.array(y)
                 H = np.histogram(y, bins=tedges)
             dfa[a] = H[0]
+            Ht = Ht + H[0]
+        self.history['npapers_all'] = Ht
+        dfa.to_excel(writer, sheet_name='top')
 
-        dfa.to_excel(writer, sheet_name='all')
+        Ht = np.zeros(len(years))
+        auth_names = list(self.pub_auth_top.author1.unique())
+        for a in auth_names:
+            df = self.pub_auth_top[self.pub_auth_top['author1'].isin([a])]
+            y = [int(i) for i in df.year.values]
+            if len(y)==0:
+                H = [[0]*(len(tedges)-1), None]
+            else:
+                y = np.array(y)
+                H = np.histogram(y, bins=tedges)
+            dfa[a] = H[0]
+            Ht = Ht + H[0]
+        self.history['npapers_top'] = Ht
+        dfa.to_excel(writer, sheet_name='top')
+
         writer.save()
+
                                                  
     def journal_quality(self):
         """
@@ -241,7 +313,7 @@ class inst_adsentries:
         filt_top_journals = self.pub_inst_all.pub.isin(jnames)
         self.pub_inst_top = self.pub_inst_all[filt_top_journals]
 
-    def reduce_article_list(self, dfi, institution_keys):
+    def reduce_article_list(self, dfi, institution_keys=None):
         """
         Return a DataFrame with a paper-based list of publications.
 
@@ -258,6 +330,9 @@ class inst_adsentries:
         dfo: DataFrame, with the list of articles.
         """
         self.sanity_check()
+
+        if institution_keys is None:
+            institution_keys = self.config.inst_strings
 
         Ps = []
         for a, x in zip(dfi.authors, dfi.ppr_list):

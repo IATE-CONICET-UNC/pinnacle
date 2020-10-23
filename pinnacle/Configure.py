@@ -164,10 +164,15 @@ class Parser(ConfigParser):
         fname_pub_auth_top = self['files']['fname_pub_auth_top'] 
         fname_pub_inst_all = self['files']['fname_pub_inst_all'] 
         fname_pub_inst_top = self['files']['fname_pub_inst_top'] 
+        fname_pub = self['files']['fname_pub'] 
 
         show_progress = self['UX']['show_progress']
         verbose = self['UX']['verbose']
         interactive = self['UX']['interactive']
+
+        inst_strings = []
+        for k in self['keys']:
+            inst_strings.append(self['keys'][k])
 
         names = ['experiment_id',
                  'dir_data',
@@ -181,6 +186,8 @@ class Parser(ConfigParser):
                  'fname_pub_auth_top',
                  'fname_pub_inst_all',
                  'fname_pub_inst_top',
+                 'fname_pub',
+                 'inst_strings',
                  'show_progress',
                  'verbose',
                  'interactive'
@@ -201,6 +208,8 @@ class Parser(ConfigParser):
                      fname_pub_auth_top, 
                      fname_pub_inst_all, 
                      fname_pub_inst_top,
+                     fname_pub,
+                     inst_strings,
                      show_progress,
                      verbose,
                      interactive
