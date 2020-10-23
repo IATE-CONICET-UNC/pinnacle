@@ -12,8 +12,10 @@
 
 import os
 import sys
+
 sys.path.insert(0, os.path.abspath('../../pinnacle/'))
 sys.path.insert(0, os.path.abspath('../../test/'))
+sys.path.insert(0, os.path.abspath('../../'))
 
 src_paths = [ '../../pinnacle/', '../../test/' ]
 

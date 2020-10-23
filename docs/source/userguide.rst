@@ -17,6 +17,11 @@ The process basically consists on creating four datasets:
 - pub_inst_all
 - pub_inst_top
 
+along with entries with data for the institute and the authors:
+
+- history
+- staff
+
 
 Installation
 ------------
@@ -33,6 +38,9 @@ of the code from the GitHub page, and run::
    pip install .
 
 
+API usage
+------------
+
 The analysis of a set of authors can be made easily with the following
 steps.
 
@@ -42,82 +50,49 @@ First, load the package:
 
    from pinnacle import pinnacle
 
-For the configuration, create a dictionary with the following fields:
+For the configuration, edit a configuration file following the
+template in the set directory, and load it with the Parser.
 
 .. code-block:: python
 
-   config = {}
-   config['dir_data'] = '../dat'  # directory for data
-   config['dir_plot'] = '../plt'  # directory for plots
-   config['qreload'] = False      # reload ADS query?
-   config['clobber'] = False      # overwrite pickle files?
-   config['nrowsmax'] = 200       # maximu number of ADS entries
-   config['fname_staff'] = 'staff_iate.csv'  # file with staff member names
+    ini = 'my_institute.ini'
+    config = Parser(ini)
+    df = pinnacle.inst_adsentries(config)
 
-   # load from file ("file") or download from ADS ("ads")
-   config['data_source'] = 'file'
-
-   # roots for data filenames
-   config['fname_pub_auth_all'] = 'pub_auth_all' 
-   config['fname_pub_auth_top'] = 'pub_auth_top' 
-   config['fname_pub_inst_all'] = 'pub_inst_all' 
-   config['fname_pub_inst_top'] = 'pub_inst_top' 
-   #----
-
-
-Then, it is possible to load the names of the researchers from a file
-('fname_staff' entry of config) and load all the publications:
+The set of the names of the researchers can be loaded with different
+tools, from Excell spreadsheets, CSV files, or entered manually as
+lists.
 
 .. code-block:: python
 
-   # Initialize publications container
-   iate = pinnacle.inst_adsentries(config)
+   DF = staff.download_inst(staff_staff)
+   staff.reduce_article_list(DF)
+   staff.eliminate_repeated('bibcode')
+   staff.journal_quality()
+   staff.load_history(nstaff, int(columns[1]))
+   staff.save_inst() 
 
-   if config['data_source'] == 'ads':
-       # QUERY AND DOWNLOAD
-       # load staff member names
-       staff = iate.load_staff(interactive=True)
-       staf = staff[4:6]
-       # query and download from ADS server
-       DF = iate.download_inst(staf)
-       iate_strings = ['IATE', 'Córdoba', 'Laprida 854', 'X5000BGR',
-                       'Universidad Nacional de Córdoba',
-                       'Instituto de Astronomía Teórica y Experimental']
-       #f = partial(iate.is_staff_institute, institution_keys=iate_strings)
-       iate.reduce_article_list(DF, iate_strings)  # -> pub_auth_all
-       iate.eliminate_repeated('bibcode')          # -> pub_inst_all
+It not necesary to make this every time, since pickle files are saved.
+After the first run, the dataset can be loaded simply using::
 
-       iate.journal_quality()  # -> pub_auth_top, pub_inst_top
+    staff.load_inst()
 
-       iate.save_inst()
+The number of papers per author per year can be obtained in a
+dataframe or an XLSX file with::
 
+    staff.save_table()
 
-The last line creates files with the pickle objects for the datasets.
+Finally, plotting tools are available with the ``pub_dataviz`` class,
+that inherites the data from a ``inst_adsentries`` class::
 
-If the ADS entries have been previously read, the data files can be
-loaded easily:
+    viz = pub_dataviz.pub_dataviz(df)
 
-.. code-block:: python
+There are several plots that can be obtained.  The full set is
+produced with::
 
-    iate.load_inst()
+    viz.plot_all()
+
+Or, alternatiely, individual plots using the function in the class.
 
 
-The plots can be run as follows:
 
-.. code-block:: python
-
-   from pinnacle import pub_dataviz
-
-   viz = pub_dataviz(iate)
-
-   viz.papers_histogram(top=True)
-   viz.papers_histogram(top=False)
-
-   viz.cumulative_per_author(top=False, normalize_first=False)
-   viz.cumulative_per_author(top=False, normalize_first=True)
-   viz.cumulative_per_author(top=True, normalize_first=False)
-   viz.cumulative_per_author(top=True, normalize_first=True)
-
-   viz.authors_citations_years()
-   viz.top_proceedings()
-    

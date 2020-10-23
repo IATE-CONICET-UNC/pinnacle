@@ -28,6 +28,7 @@ increase impact and productivity.
    :caption: Contents:
 
    userguide
+   configuration
    iate
    report
    stats

@@ -7,14 +7,12 @@
 # MIT License:
 # https://github.com/IATE-CONICET-UNC/pinnacle/blob/master/LICENSE
 
-from pinnacle import pinnacle
 from matplotlib import pyplot as plt
-from pinnacle.plot_styles import *
+from pinnacle.plot_styles import cycling_attrs, aes_attrs
 
 import numpy as np
-import pickle
-import pandas as pd
 import random
+
 
 class pub_dataviz:
 
@@ -47,7 +45,7 @@ class pub_dataviz:
              If True, paper in selected journals are used, otherwise,
              all papers.
         '''
-        
+
         if top:
             y = self.inst.pub_inst_top.year.values
         else:
@@ -81,7 +79,7 @@ class pub_dataviz:
         ax.grid()
 
         ax.set_xlabel('year')
-        
+
         if top:
             ax.set_ylabel('number of papers')
             ax.set_title('publications by IATE')
@@ -107,16 +105,16 @@ class pub_dataviz:
              If True, paper in selected journals are used, otherwise,
              all papers.
         '''
-        
+
         if per_auth:
             y = list(self.inst.history.index)
             npp = []
             for a in y:
                 k = self.inst.history.loc[a]
                 if top:
-                    npp.append(k[2]/max(1,k[0]))
+                    npp.append(k[2]/max(1, k[0]))
                 else:
-                    npp.append(k[1]/max(1,k[0]))
+                    npp.append(k[1]/max(1, k[0]))
             sufix = '_norm'
             hist = npp
         else:
@@ -137,7 +135,7 @@ class pub_dataviz:
         ax.grid()
 
         ax.set_xlabel('year')
-        
+
         if top:
             ax.set_ylabel('number of papers')
             ax.set_title('publications by IATE')
@@ -151,6 +149,7 @@ class pub_dataviz:
 
         fig.savefig(fout)
         plt.close()
+
     def cumulative_per_author(self, top=False, normalize_first=False):
         '''
         Parameters
@@ -190,7 +189,7 @@ class pub_dataviz:
         fig = plt.figure(figsize=(14, 7))
         ax = fig.add_subplot()
         cycling_attrs()
-              
+
         y_max = 0
         auth_names = list(df.author1.unique())
         for a in auth_names:
@@ -198,7 +197,7 @@ class pub_dataviz:
             d = df[df['author1'].isin([a])]
 
             y = [int(i) for i in d.year.values]
-            if len(y)==0:
+            if len(y) == 0:
                 continue
             y = np.array(y)
             if normalize_first:
@@ -233,7 +232,7 @@ class pub_dataviz:
         top: bool
              Use all works or papers from selected journals
         '''
-        
+
         if top:
             df = self.inst.pub_inst_top
         else:
@@ -271,26 +270,24 @@ class pub_dataviz:
 
         fout = (f"{self.config.dir_plot}/nauth_ncitas_year.png")
         fig.savefig(fout)
-        plt.close()  
+        plt.close()
 
     def top_proceedings(self):
         '''
         Plot a scatter of number of publications vs number of papers
 
         '''
- 
-
         tod = []
         top = []
 
         auth_names = list(self.inst.pub_inst_all.author1.unique())
         for a in auth_names:
 
-            df = self.inst.pub_inst_all 
+            df = self.inst.pub_inst_all
             dfa = df[df['author1'].isin([a])]
             df = self.inst.pub_inst_top
             dft = df[df['author1'].isin([a])]
-         
+
             tod.append(dfa.shape[0])
             top.append(dft.shape[0])
 
@@ -298,7 +295,7 @@ class pub_dataviz:
         ax = fig.add_subplot()
         ax.scatter(tod, top)
         m = max(tod)
-        ax.plot([0,m],[0,m])
+        ax.plot([0, m], [0, m])
 
         ax.set_title('all works vs. top papers')
         ax.set_xlabel('all works')
@@ -306,7 +303,7 @@ class pub_dataviz:
 
         fout = (f"{self.config.dir_plot}/top_vs_all.png")
         fig.savefig(fout)
-        plt.close()           
+        plt.close()
 
     def number_authors(self, top=True):
         '''
@@ -318,7 +315,7 @@ class pub_dataviz:
         top: bool
              Use all works or papers from selected journals
         '''
- 
+
         if top:
             df = self.inst.pub_inst_top
         else:
@@ -342,33 +339,26 @@ class pub_dataviz:
 
         fout = (f"{self.config.dir_plot}/year_nauth.png")
         fig.savefig(fout)
-        plt.close()  
+        plt.close()
 
     def nauth_npprs(self, top=True):
         fig = plt.figure(figsize=(10, 5))
         ax = fig.add_subplot()
- 
-        if top:
-            df = self.inst.pub_inst_top
-        else:
-            df = self.inst.pub_inst_all
 
         x = list(self.inst.history.index)
         y = self.inst.history['pop']
-        
+
         if top:
             z = self.inst.history['npapers_top']
         else:
             z = self.inst.history['npapers_all']
 
-
         ax.plot(x, y, label='authors')
         ax.plot(x, z, label='papers')
-        #ax.set_yscale('log')
         ax.legend()
-        #ax.set_title('number of authors per year')
-        #ax.set_xlabel('year')
-        #ax.set_ylabel('N authors')
+        ax.set_title('number of authors per paper')
+        ax.set_xlabel('year')
+        ax.set_ylabel('N authors / paper')
 
         if top:
             ax.set_title('publications by IATE, top papers')
@@ -376,25 +366,25 @@ class pub_dataviz:
         else:
             ax.set_title('papers published by IATE, all works')
             fout = (f"{self.config.dir_plot}/nauth_npprs_years_all.png")
- 
+
         fig.savefig(fout)
-        plt.close()  
+        plt.close()
 
     def plot_all(self):
         '''
         Make all the plots.
 
         '''
-        self.papers_histogram2(top=True)                              
-        self.papers_histogram2(top=False)                             
+        self.papers_histogram2(top=True)
+        self.papers_histogram2(top=False)
         self.papers_histogram2(top=True, per_auth=True)
         self.papers_histogram2(top=False, per_auth=True)
 
-        self.cumulative_per_author(top=False, normalize_first=False) 
-        self.cumulative_per_author(top=False, normalize_first=True)  
-        self.cumulative_per_author(top=True, normalize_first=False)  
-        self.cumulative_per_author(top=True, normalize_first=True)   
-        
-        self.authors_citations_years()                               
-        self.top_proceedings()                                       
+        self.cumulative_per_author(top=False, normalize_first=False)
+        self.cumulative_per_author(top=False, normalize_first=True)
+        self.cumulative_per_author(top=True, normalize_first=False)
+        self.cumulative_per_author(top=True, normalize_first=True)
+
+        self.authors_citations_years()
+        self.top_proceedings()
         self.nauth_npprs()
