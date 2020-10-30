@@ -34,7 +34,9 @@ class pub_dataviz:
         self.inst = inst
         self.config = inst.config
 
-    def papers_histogram(self, top=False, per_auth=False):
+    # def filter_quality(self):
+
+    def papers_histogram(self, top=False, per_auth=False, quality=5):
         '''
         Papers_histogram: histogram of the years of publications
 
@@ -49,6 +51,9 @@ class pub_dataviz:
         if top:
             y = self.inst.pub_inst_top.year.values
         else:
+
+            # ACA HACER UNA FUNCION PARA FILTRAR CON EL Q
+
             y = self.inst.pub_inst_all.year.values
 
         if per_auth:

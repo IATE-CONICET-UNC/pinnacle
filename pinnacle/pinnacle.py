@@ -174,6 +174,8 @@ class inst_adsentries:
             npprs.append(len(p))
         byauth['n_papers'] = npprs
 
+        # self.byauth = byauth
+
         return byauth
 
     def save_inst(self):
@@ -275,7 +277,7 @@ class inst_adsentries:
 
         writer.save()
 
-    def journal_quality(self):
+    def journal_quality(self, custom_list=False):
         """
         Filter non-indexed journals and proceedings.
 
@@ -290,17 +292,18 @@ class inst_adsentries:
 
         # edit the file to leave only top indexed journals
         # (delete proceedings, BAAA, etc.)
-        filename = '../dat/journals_top.txt'
-        with open(filename) as f:
-            jnames = f.read()
-        jnames = jnames.split('\n')
-        jnames.pop()
+        if custom_list:
+            filename = '../dat/journals_top.txt'
+            with open(filename) as f:
+                jnames = f.read()
+            jnames = jnames.split('\n')
+            jnames.pop()
 
-        filt_top_journals = self.pub_auth_all.pub.isin(jnames)
-        self.pub_auth_top = self.pub_auth_all[filt_top_journals]
+            filt_top_journals = self.pub_auth_all.pub.isin(jnames)
+            self.pub_auth_top = self.pub_auth_all[filt_top_journals]
 
-        filt_top_journals = self.pub_inst_all.pub.isin(jnames)
-        self.pub_inst_top = self.pub_inst_all[filt_top_journals]
+            filt_top_journals = self.pub_inst_all.pub.isin(jnames)
+            self.pub_inst_top = self.pub_inst_all[filt_top_journals]
 
     def reduce_article_list(self, dfi, institution_keys=None):
         """
@@ -329,7 +332,8 @@ class inst_adsentries:
 
                 isinst = False
                 for aff in p.aff:
-                    thisis = any(word in aff for word in institution_keys)
+                    ncoinc = sum([word in aff for word in institution_keys])
+                    thisis = ncoinc > 1
                     isinst = isinst or thisis
 
                 if isinst:
@@ -344,6 +348,90 @@ class inst_adsentries:
         dfo = pd.DataFrame(Ps, columns=names)
 
         self.pub_auth_all = dfo
+
+    def get_pub_scores(self, subset='auth_all'):
+        """
+        Add to the DataFrames information about the quality of the journal.
+
+        Parameters
+        ----------
+        self
+        """
+        from nltk.corpus import stopwords
+        from nltk.tokenize import word_tokenize
+        import csv
+        from difflib import SequenceMatcher
+        import jellyfish
+#        self.sanity_check()
+
+        if subset == 'auth_top':
+            pubs = self.pub_auth_top['pub']
+        elif subset == 'auth_all':
+            pubs = self.pub_auth_all['pub']
+        elif subset == 'inst_top':
+            pubs = self.pub_inst_top['pub']
+        elif subset == 'inst_all':
+            pubs = self.pub_inst_all['pub']
+
+        # load publication metrics
+
+        # download stowords the first time
+        def similar(a, b):
+            return SequenceMatcher(None, a, b).ratio()
+
+        def get_q(s):
+            q = 0
+            if "Q4" in s:
+                q = 4
+            if "Q3" in s:
+                q = 3
+            if "Q2" in s:
+                q = 2
+            if "Q1" in s:
+                q = 1
+            return q
+
+        stop_words = set(stopwords.words('english'))
+
+        journals = []
+        with open('scimagojr.csv', newline='') as csvfile:
+            s = csv.reader(csvfile, delimiter=';')
+            for row in s:
+                jname = row[2].lower()
+                word_tokens = word_tokenize(jname)
+                fname = [w for w in word_tokens if w not in stop_words]
+                sent1 = ' '.join(fname)
+                sent1 = sent1.replace('/', '')
+                row[2] = sent1
+                journals.append(row)
+
+        Q = []
+        for p in pubs:
+            jname = p.lower()
+            word_tokens = word_tokenize(jname)
+            fname = [w for w in word_tokens if w not in stop_words]
+            sent1 = ' '.join(fname)
+            sent1 = sent1.replace('/', '')
+
+            match = 0
+            J = ""
+            for Journal in journals:
+                journal = Journal[2]
+                s1 = similar(sent1, journal)
+                s2 = jellyfish.jaro_winkler(sent1, journal)
+                if s1 > 0.9 and s2 > 0.9:
+                    match += 1
+                    J = Journal[-1]
+            Q.append(get_q(J))
+
+        if subset == 'auth_top':
+            self.pub_auth_top['Q'] = Q
+        elif subset == 'auth_all':
+            self.pub_auth_all['Q'] = Q
+        elif subset == 'inst_top':
+            self.pub_inst_top['Q'] = Q
+        elif subset == 'inst_all':
+            self.pub_inst_all['Q'] = Q
 
     def get_papers_by_authors(authors_list, rows_max=999):
         """

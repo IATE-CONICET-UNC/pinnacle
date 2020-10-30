@@ -1,3 +1,6 @@
+# this code is for development purposes
+
+
 from difflib import SequenceMatcher
 import jellyfish
 from pinnacle import pinnacle
@@ -5,15 +8,15 @@ from pinnacle import pub_dataviz
 from openpyxl import load_workbook
 import pandas as pd
 from pinnacle.Configure import Parser
- 
+
 
 def similar(a, b):
     return SequenceMatcher(None, a, b).ratio()
 
-
 import nltk
 from nltk.corpus import stopwords
 from nltk.tokenize import word_tokenize 
+import csv
 # download stowords the first time
 
 stop_words = set(stopwords.words('english')) 
@@ -28,7 +31,10 @@ with open('scimagojr.csv', newline='') as csvfile:
         fname = [w for w in word_tokens if not w in stop_words]
         sent1 = ' '.join(fname)
         sent1 = sent1.replace('/', '')
-        journals.append(sent1)
+
+        row[2] = sent1
+
+        journals.append(row)
     
 
 
@@ -42,6 +48,22 @@ d = df.pub_inst_top
 
 N = d.shape[0]
 
+
+def get_q(s):
+    q = 0
+    if "Q4" in s:
+        q = 4
+    if "Q3" in s:
+        q = 3
+    if "Q2" in s:
+        q = 2
+    if "Q1" in s:
+        q = 1
+    return q
+
+
+
+
 k = 0
 for i in range(N):
     p = d.pub.values[i]
@@ -52,18 +74,16 @@ for i in range(N):
     sent1 = ' '.join(fname)
     sent1 = sent1.replace('/', '')
 
-    print(p)
-    print(sent1)
-
-    for journal in journals:
+    match = 0
+    J = ""
+    for Journal in journals:
+        journal = Journal[2]
         s1 = similar(sent1, journal)
-        s2 = jellyfish.hamming_distance(sent1, journal)
-        s3 = jellyfish.jaro_winkler(sent1, journal)
-        #if s1>0.9 and s2<2 and s3>0.9:
-        if s1>0.9 and s3>0.9:
-            print('        ',journal)
-            print('------->', sent1)
-    input()
+        s2 = jellyfish.jaro_winkler(sent1, journal)
+        if s1>0.9 and s2>0.9:
+            match += 1
+            J = Journal[-1]
+    print(get_q(J), p)
 
 
 # dos2unix los dos archivos
@@ -71,9 +91,3 @@ for i in range(N):
 #awk -F';' 'BEGIN {OFS = FS} {first = $1; $1 = ""; print $0}' scimagojr.csv > aux
 #sort -t\; -k 3 aux | uniq > aux2
 #mv aux2 scimagojr.csv
-
-
-
-
-
-

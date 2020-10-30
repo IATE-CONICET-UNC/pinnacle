@@ -29,7 +29,13 @@ becarios = pinnacle.inst_adsentries(config_becarios)
 DF = becarios.download_inst(staff_becarios)
 becarios.reduce_article_list(DF)
 becarios.eliminate_repeated('bibcode')
-becarios.journal_quality()
+
+#becarios.journal_quality()
+becarios.get_pub_scores('inst_all')
+becarios.get_pub_scores('inst_top')
+becarios.get_pub_scores('auth_all')
+becarios.get_pub_scores('auth_top')
+
 becarios.load_history(nstaff, int(columns[1]))
 becarios.save_inst()
 
@@ -40,7 +46,13 @@ cics = pinnacle.inst_adsentries(config_cics)
 DF = cics.download_inst(staff_cics)
 cics.reduce_article_list(DF)
 cics.eliminate_repeated('bibcode')
-cics.journal_quality()
+
+#cics.journal_quality()
+cics.get_pub_scores('inst_all')
+cics.get_pub_scores('inst_top')
+cics.get_pub_scores('auth_all')
+cics.get_pub_scores('auth_top')
+
 cics.load_history(nstaff, int(columns[1]))
 cics.save_inst()
 
